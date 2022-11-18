@@ -1,0 +1,30 @@
+{
+  "name": "automationbpotcamp-webdriverio-assignment",
+  "version": "1.0.0",
+  "description": "Quality Works Bootcamp Webdriverio Assignment - Week 7",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx wdio run wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davinascott/AutomationBpotcamp-Webdriverio-Assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davinascott/AutomationBpotcamp-Webdriverio-Assignment/issues"
+  },
+  "homepage": "https://github.com/davinascott/AutomationBpotcamp-Webdriverio-Assignment#readme",
+  "dependencies": {
+    "webdriverio": "^7.26.0"
+  },
+  "devDependencies": {
+    "@wdio/cli": "^7.26.0",
+    "@wdio/local-runner": "^7.26.0",
+    "@wdio/mocha-framework": "^7.26.0",
+    "@wdio/selenium-standalone-service": "^7.26.0",
+    "@wdio/spec-reporter": "^7.26.0"
+  }
+}
