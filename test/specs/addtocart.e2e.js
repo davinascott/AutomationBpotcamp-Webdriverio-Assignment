@@ -11,6 +11,6 @@ describe('My Add to Cart application', () => {
         await expect(HomePage.cartItem).toBeExisting();
         await HomePage.addToCart();
         await expect(HomePage.successPanelHeader).toHaveTextContaining('You added ');
-        await HomePage.showCart();
+        //await HomePage.showCart();
     });
 });

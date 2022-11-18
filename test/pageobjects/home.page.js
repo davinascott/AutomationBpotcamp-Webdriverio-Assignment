@@ -1,4 +1,4 @@
-//const { default: $ } = require('webdriverio/build/commands/browser/$');
+
 const Page = require('./page');
 
 /**
@@ -21,23 +21,31 @@ class HomePage extends Page {
     }
 
     get BtnAddToCart() {
-        return $('//*[@class="product-items widget-product-grid"]/li[1]//*[@title="Add to Cart"]');
+        return $('//*[@id="product-addtocart-button"]');
+        //return $('//*[@class="product-items widget-product-grid"]/li[1]//*[@title="Add to Cart"]');
     }
 
     get itemSizeSmall() {
-        return $('//*[@class="product-items widget-product-grid"]/li[1]//*[@class="swatch-attribute-options clearfix"][1]//*[@option-label="S"]');
+        return $('//*[@id="option-label-size-143-item-167"]');
+        //return $('//*[@class="product-items widget-product-grid"]/li[1]//*[@class="swatch-attribute-options clearfix"][1]//*[@option-label="S"]');
     }
 
     get itemColor() {
-        return $('//*[@class="product-items widget-product-grid"]/li[1]//*[@class="swatch-attribute color"]//*[@option-label="Purple"]');
+        return $('//*[@id="option-label-color-93-item-56"]');
+        //return $('//*[@class="product-items widget-product-grid"]/li[1]//*[@class="swatch-attribute color"]//*[@option-label="Purple"]');
     }
 
     get successPanelHeader() {
-        return $('//*[@id="maincontent"]/div[2]/div[2]/div/div/div');
+        return $('//*[@id="maincontent"]/div[1]/div[2]/div/div/div');
     }
 
     get showCart() {
         return $('//*[@class="action showcart"]');
+    }
+
+    //Needed to access order history
+    get myAccount() {
+        return $('/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a');
     }
 
     /**
@@ -45,7 +53,7 @@ class HomePage extends Page {
      * e.g. to login using username and password
      */
     async addToCart () {
-        await (this.cartItem).moveTo();
+        await (this.cartItem).click();
         await this.itemSizeSmall.click();
         await this.itemColor.click();
         await this.BtnAddToCart.click();
