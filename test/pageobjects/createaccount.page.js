@@ -37,8 +37,8 @@ class CreateAccountPage extends Page {
     }
 
     get btnSubmit () {
-        return $('button[type="submit"]');
-        //return $('//*[@title="Create an Account"]');
+        //return $('button[type="submit"]');
+        return $('//*[@title="Create an Account"]');
     }
 
     /**
@@ -51,7 +51,7 @@ class CreateAccountPage extends Page {
         await this.inputEmail.setValue(email);
         await this.confirmPassword.setValue(cpassword);
         await this.inputPassword.setValue(password);
-        //await this.btnSubmit.click();
+        await this.btnSubmit.click();
     }
 
     /**
