@@ -1,4 +1,5 @@
 
+const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
 
 /**
@@ -18,6 +19,10 @@ class HomePage extends Page {
 
     get cartItem() {
         return $('//*[@class="product-items widget-product-grid"]/li[1]');
+    }
+
+    get cartItemText() {
+        return $('//*[@title="Radiant Tee"]');
     }
 
     get BtnAddToCart() {

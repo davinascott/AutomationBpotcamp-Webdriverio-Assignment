@@ -1,4 +1,5 @@
 //const { default: $ } = require('webdriverio/build/commands/browser/$');
+//const { default: $ } = require('webdriverio/build/commands/element/$');
 const Page = require('./page');
 
 /**
@@ -15,7 +16,15 @@ class OrderHistoryPage extends Page {
     }
 
     get orderNumber() {
-        return $('//*[@id="my-orders-table"]/tbody/tr/td[1]');
+        return $('//*[@class="checkout-success"]/p[1]/a/strong');
+    }
+
+    get btnFirstOrderItemInTable() {
+        return $('//*[@id="my-orders-table"]/tbody/tr[1]/td[6]/a[1]');
+    }
+
+    get firstOrderDetails() {
+        return $('//*[@id="my-orders-table"]/tbody[1]/tr/td[1]/strong');
     }
 
     

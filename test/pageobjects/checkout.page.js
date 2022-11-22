@@ -118,7 +118,7 @@ class CheckOutPage extends Page {
     async checkoutReturnLoggedInShopper() {
         await this.fixedShippingMethod.click();
         await this.btnNext.click();
-        await browser.pause(3000);
+        //await browser.pause(3000);
         //await browser.setTimeout({ 'pageLoad': 5000 });
         await this.btnPlaceOrder.click();
     }
