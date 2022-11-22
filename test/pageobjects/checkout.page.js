@@ -1,5 +1,6 @@
 //const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
+const HomePage = require('../pageobjects/home.page');
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -16,7 +17,7 @@ class CheckOutPage extends Page {
         return $('//*[@id="I3AOKCE"]');
     }
 
-    get lastNamr() {
+    get lastName() {
         return $('//*[@id="HRWSLY7"]');
     }
 
@@ -74,24 +75,62 @@ class CheckOutPage extends Page {
         return $('//*[@class="order-number"]/strong')
     }
 
+    get showCart() {
+        return HomePage.showCart;
+    }
+
+    get email() {
+        return $('//*[@id="customer-email"]');
+    }
+
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
-     async checkout (fName,lName,company,streetaddress,city,state,zipcode,country,phonenum,fSM,) {
-        await this.inputFirstName.setValue(fName);
-        await this.inputLastName.setValue(lName);
-        await this.inputEmail.setValue(email);
-        await this.confirmPassword.setValue(cpassword);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+    //async checkout (fName,lName,femail,company,streetaddress,city,state,zipcode,country,phonenum,fSM,) 
+     async checkoutFirstTimeLoggedInShipper (company,streetaddress,city,state,zipcode,country,phonenum,fSM) {
+        // await this.firstName.setValue(fName);
+        // await this.lastName.setValue(lName);
+        //await this.email.setValue(fEmail);
+        await this.company.setValue(company);
+        await this.streetAddress.setValue(streetaddress);
+        await this.city.setValue(city);
+        await this.zipCode.setValue(zipcode);
+        await this.state.selectByVisibleText(state);
+        await this.country.selectByVisibleText(country);
+        await this.phoneNumber.setValue(phonenum);
+        if (fSM == 'yes') {
+            await this.fixedShippingMethod.click();
+        } 
+        //await this.btnNext.click();
+    }
+
+    async checkoutNotLoggedInShipper (fName,lName,fEmail,company,streetaddress,city,state,zipcode,country,phonenum,fSM) {
+        await this.firstName.setValue(fName);
+        await this.lastName.setValue(lName);
+        await this.email.setValue(fEmail);
+        await this.company.setValue(company);
+        await this.streetAddress.setValue(streetaddress);
+        await this.city.setValue(city);
+        await this.zipCode.setValue(zipcode);
+        await this.state.selectByVisibleText(state);
+        await this.country.selectByVisibleText(country);
+        await this.phoneNumber.setValue(phonenum);
+        if (fSM == 'yes') {
+            await this.fixedShippingMethod.click();
+        } 
+        //await this.btnNext.click();
+    }
+
+    async selectCity () {
+        
     }
 
     /**
      * overwrite specific options to adapt it to page object
      */
     open () {
-        return super.open('');
+        return super.open('checkout/#shipping');
     }
 }
 
