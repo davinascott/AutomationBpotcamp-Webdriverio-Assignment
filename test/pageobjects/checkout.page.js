@@ -2,6 +2,7 @@
 const Page = require('./page');
 const HomePage = require('../pageobjects/home.page');
 
+
 /**
  * sub page containing specific selectors and methods for a specific page
  */
@@ -14,51 +15,51 @@ class CheckOutPage extends Page {
     }
 
     get firstName() {
-        return $('//*[@id="I3AOKCE"]');
+        return $('//*[@name="firstname"]');
     }
 
     get lastName() {
-        return $('//*[@id="HRWSLY7"]');
+        return $('//*[@name="lastname"]');
     }
 
     get company() {
-        return $('//*[@id="SYX44G9"]');
+        return $('//*[@name="company"]');
     }
 
     get streetAddress() {
-        return $('//*[@id="S9EIOA8"]');
+        return $('//*[@name="street[0]"]');
     }
 
     get city() {
-        return $('//*[@id="VK67C2D"]');
+        return $('//*[@name="city"]');
     }
 
     get state() {
-        return $('//*[@id="JQ6HAUA"]');
+        return $('//*[@name="region_id"]');
     }
 
     get zipCode() {
-        return $('//*[@id="S4GWL6O"]');
+        return $('//*[@name="postcode"]');
     }
 
     get country() {
-        return $('//*[@id="I8TDWTQ"]');
+        return $('//*[@name="country_id"]');
     }
 
     get phoneNumber() {
-        return $('//*[@id="WD7R0PY"]');
+        return $('//*[@name="telephone"]');
     }
 
     get fixedShippingMethod() {
-        return $('//*[@id="checkout-shipping-method-load"]/table/tbody/tr[1]/td[1]/input');
+        return $('//*[@name="ko_unique_1"]');
     }
 
     get tableRateShippingMethod() {
-        return $('//*[@id="checkout-shipping-method-load"]/table/tbody/tr[2]/td[1]/input');
+        return $('//*[@name="ko_unique_2"]');
     }
 
     get btnNext() {
-        return $('//*[@id="shipping-method-buttons-container"]/div/button');
+        return $('//*[@data-role="opc-continue"]');
     }
 
     get btnPlaceOrder() {
@@ -83,6 +84,15 @@ class CheckOutPage extends Page {
         return $('//*[@id="customer-email"]');
     }
 
+    get shippingDiv() {
+        return $('//*[@id="checkout-step-shipping"]/div[1]/div/div/div/button')
+        //return $('//*[@id="checkout-step-shipping"]/div[1]/div/div/div')
+    }
+
+    get checkoutPP(){
+        return $('//*[@id="checkout"]/ul/li[1]');
+    }
+
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
@@ -95,14 +105,22 @@ class CheckOutPage extends Page {
         await this.company.setValue(company);
         await this.streetAddress.setValue(streetaddress);
         await this.city.setValue(city);
-        await this.zipCode.setValue(zipcode);
         await this.state.selectByVisibleText(state);
+        await this.zipCode.setValue(zipcode);
         await this.country.selectByVisibleText(country);
         await this.phoneNumber.setValue(phonenum);
         if (fSM == 'yes') {
             await this.fixedShippingMethod.click();
         } 
         //await this.btnNext.click();
+    }
+
+    async checkoutReturnLoggedInShopper() {
+        await this.fixedShippingMethod.click();
+        await this.btnNext.click();
+        await browser.pause(3000);
+        //await browser.setTimeout({ 'pageLoad': 5000 });
+        await this.btnPlaceOrder.click();
     }
 
     async checkoutNotLoggedInShipper (fName,lName,fEmail,company,streetaddress,city,state,zipcode,country,phonenum,fSM) {
@@ -122,9 +140,9 @@ class CheckOutPage extends Page {
         //await this.btnNext.click();
     }
 
-    async selectCity () {
+    // async selectCity () {
         
-    }
+    // }
 
     /**
      * overwrite specific options to adapt it to page object

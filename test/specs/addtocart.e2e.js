@@ -12,6 +12,11 @@ describe('My Add to Cart test', () => {
         await HomePage.open();
     });
 
+    after('Sign out of application', async () => {
+        await HomePage.signInDropDown.click();
+        await HomePage.btnSignOut.click();
+    });
+
     it('should add an item to cart from the homepage', async () => {
         await expect(HomePage.panelHeader).toBeExisting();
         //await expect(HomePage.panelHeader).toHaveTextContaining('Welcome');

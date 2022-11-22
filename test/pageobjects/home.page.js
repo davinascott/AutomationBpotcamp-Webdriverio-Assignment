@@ -48,6 +48,14 @@ class HomePage extends Page {
         return $('/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a');
     }
 
+    get signInDropDown() {
+        return $('//*[@data-action="customer-menu-toggle"]');
+    }
+
+    get btnSignOut() {
+        return $('/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[3]/a');
+    }
+
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
