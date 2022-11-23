@@ -51,10 +51,11 @@ describe('My End to End test', () => {
     it('should verify order via order history page', async () => {
         await OrderHistoryPage.open();
         await expect(OrderHistoryPage.headerMyOrders).toBeExisting();
-        //await expect(HomePage.panelHeader).toHaveTextContaining('Welcome');
-        await expect(HomePage.cartItem).toBeExisting();
-        await HomePage.addToCart();
-        await expect(HomePage.successPanelHeader).toHaveTextContaining('You added ');
+        await OrderHistoryPage.btnFirstOrderItemInTable.click();
+        const orderItemText = await OrderHistoryPage.firstOrderDetails.getText();
+        console.log(orderItemText);
+        await expect(orderItemText == "Radiant Tee");
+        await HomePage.open();
         //await HomePage.showCart();
     });
 });

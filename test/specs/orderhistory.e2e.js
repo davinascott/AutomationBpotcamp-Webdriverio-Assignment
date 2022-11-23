@@ -24,6 +24,8 @@ describe('My End to End test', () => {
         await OrderHistoryPage.btnFirstOrderItemInTable.click();
         const orderItemText = await OrderHistoryPage.firstOrderDetails.getText();
         console.log(orderItemText);
+        await expect(orderItemText == "Radiant Tee");
+        await HomePage.open();
         //await expect(HomePage.panelHeader).toHaveTextContaining('Welcome');
         //await HomePage.showCart();
     });

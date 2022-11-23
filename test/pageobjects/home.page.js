@@ -1,5 +1,5 @@
 
-const { default: $ } = require('webdriverio/build/commands/browser/$');
+//const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
 
 /**
