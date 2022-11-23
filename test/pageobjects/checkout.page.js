@@ -3,6 +3,7 @@ const Page = require('./page');
 const HomePage = require('../pageobjects/home.page');
 
 
+
 /**
  * sub page containing specific selectors and methods for a specific page
  */

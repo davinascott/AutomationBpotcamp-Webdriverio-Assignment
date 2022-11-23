@@ -1,6 +1,7 @@
 //const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
 
+
 /**
  * sub page containing specific selectors and methods for a specific page
  */
