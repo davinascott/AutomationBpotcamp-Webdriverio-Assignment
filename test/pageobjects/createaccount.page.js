@@ -1,4 +1,5 @@
 //const { default: $ } = require('webdriverio/build/commands/browser/$');
+//const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
 
 
@@ -42,6 +43,21 @@ class CreateAccountPage extends Page {
         return $('//*[@title="Create an Account"]');
     }
 
+    get errMismatchedPassword() {
+        return $('//*[@id="password-confirmation-error"]');
+    }
+
+    get errDuplicateEmail() {
+        return $('//*[@role="alert"]');
+    }
+
+    get errFirstname() {
+        return $('//*[@id="firstname-error"]');
+    }
+
+    get errLastName() {
+        return $('//*[@id="lastname-error"]');
+    }
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password

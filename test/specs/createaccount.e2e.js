@@ -1,20 +1,25 @@
 const CreateAccountPage = require('../pageobjects/createaccount.page');
 const SecurePage = require('../pageobjects/secure.page');
-//const CreateAcctData = require('../data/createaccountdata');
+const CreateAcctData = require('../data/createaccountdata');
 
-describe('My Create Account application', () => {
-    it('should create a valid account', async () => {
-        await CreateAccountPage.open();
-
-        await CreateAccountPage.createaccount('Terry','Scott','terry.scott@gmail.com','passowrd@1','passowrd@1');
-        await expect(SecurePage.flashAlert).toBeExisting();
-        await expect(SecurePage.flashAlert).toHaveTextContaining(
-            'Thank you for registering with Fake Online Clothing Store.');
-    });
-
-    it('should not be able to create account with invalid data', async () =>{
-        await CreateAccountPage.open();
-        //console.log(CreateAccountData[0]);
-    });
-
+describe('My Create Account application', async () => {
+    for(const record of CreateAcctData){
+        it('should create a valid account', async () => {
+            await CreateAccountPage.open();
+            await CreateAccountPage.createaccount(record.firstname,record.lastname,record.email,record.password,record.confirmpassword);
+            if (record.scenario == "Empty Required Field - Firstname"){
+                await expect(browser).toHaveUrl(record.expectedUrl);
+                await expect(CreateAccountPage.errFirstname).toHaveTextContaining(record.message);
+            } else if (record.scenario == "Mismatched password") {
+                await expect(browser).toHaveUrl(record.expectedUrl);
+                await expect(CreateAccountPage.errMismatchedPassword).toHaveTextContaining(record.message);
+            } else if (record.scenario = "Email already registered") {
+                await expect(browser).toHaveUrl(record.expectedUrl);
+                await expect(CreateAccountPage.errDuplicateEmail).toHaveTextContaining(record.message);
+            } else {
+                await expect(browser).toHaveUrl('https://magento.softwaretestingboard.com/customer/account/');
+                await expect(SecurePage.flashAlert).toHaveTextContaining(record.message);
+            }
+        });
+    }
 });
