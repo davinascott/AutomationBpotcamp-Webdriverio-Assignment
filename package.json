@@ -7,10 +7,7 @@
     "test": "npx wdio run wdio.conf.js", 
     "addtocart": "npx wdio run wdio.conf.js --spec ./test/specs/addtocart.e2e.js",
     "alltests": "npx wdio run wdio.conf.js --spec ./test/specs/alltests.e2e.js",
-    "checkout": "npx wdio run wdio.conf.js --spec ./test/specs/checkout.e2e.js",
-    "createaccount": "npx wdio run wdio.conf.js --spec ./test/specs/createaccount.e2e.js",
-    "orderhistory": "npx wdio run wdio.conf.js --spec ./test/specs/orderhistory.e2e.js",
-    "login": "npx wdio run wdio.conf.js --spec ./test/specs/login.e2e.js"
+    "createaccount": "npx wdio run wdio.conf.js --spec ./test/specs/createaccount.e2e.js"
   },
   "repository": {
     "type": "git",

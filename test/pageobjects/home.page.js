@@ -1,5 +1,6 @@
 
 //const { default: $ } = require('webdriverio/build/commands/browser/$');
+//const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
 
 /**
@@ -59,6 +60,14 @@ class HomePage extends Page {
 
     get btnSignOut() {
         return $('/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[3]/a');
+    }
+
+    get btnMyAccount() {
+        return $('/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[1]/a');
+    }
+
+    get btnMyOrders() {
+        return $('//*[@id="block-collapsible-nav"]/ul/li[2]');
     }
 
     /**

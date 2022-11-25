@@ -113,7 +113,7 @@ class CheckOutPage extends Page {
         if (fSM == 'yes') {
             await this.fixedShippingMethod.click();
         } 
-        //await this.btnNext.click();
+        await this.btnNext.click();
     }
 
     async checkoutReturnLoggedInShopper() {

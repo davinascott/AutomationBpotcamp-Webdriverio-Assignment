@@ -38,7 +38,7 @@ module.exports = [
         firstname: "Hannah",
         lastname:"Trevor",
         newsletter:"No",
-        email:"treveroney3@gmail.com",
+        email:"ftcheckout5@gmail.com",
         password:"passowrd@1",
         confirmpassword:"passowrd@1",
         message:"Thank you for registering with Fake Online Clothing Store.",
